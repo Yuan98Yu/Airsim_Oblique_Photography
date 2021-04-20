@@ -1,0 +1,9 @@
+{
+    "target_region": [
+        [75, -70],
+        [2075, 930]
+    ],
+    "height": -200,
+    "heading_overlap_rate": 0.8,
+    "side_overlap_rate": 0.7
+}

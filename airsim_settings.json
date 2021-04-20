@@ -1,0 +1,136 @@
+{
+    "SettingsVersion": 1.2,
+    "SimMode": "ComputerVision",
+    "ClockSpeed": 5,
+    "Recording": {
+        "RecordOnMove": false
+    },
+    "CameraDefaults": {
+        "CaptureSettings": [
+            {
+                "ImageType": 0,
+                "Width": 4864,
+                "Height": 3648,
+                "FOV_Degrees": 84
+            }
+        ]
+    },
+    "Vehicles": {
+        "COOLA-CV": {
+            "VehicleType": "ComputerVision",
+            "AutoCreate": true,
+            "Cameras": {
+                "Down": {
+                    "CaptureSettings": [
+                        {
+                            "ImageType": 0,
+                            "Width": 4864,
+                            "Height": 3648,
+                            "FOV_Degrees": 84
+                        }
+                    ],
+                    "Gimbal": {
+                        "Stabilization": 0,
+                        "Pitch": -90,
+                        "Roll": 0,
+                        "Yaw": 0
+                    },
+                    "X": 0,
+                    "Y": 0,
+                    "Z": 0,
+                    "Pitch": -90,
+                    "Roll": 0,
+                    "Yaw": 0
+                },
+                "Front": {
+                    "CaptureSettings": [
+                        {
+                            "ImageType": 0,
+                            "Width": 4864,
+                            "Height": 3648,
+                            "FOV_Degrees": 84
+                        }
+                    ],
+                    "Gimbal": {
+                        "Stabilization": 0,
+                        "Pitch": -45,
+                        "Roll": 0,
+                        "Yaw": 0
+                    },
+                    "X": 0,
+                    "Y": 0,
+                    "Z": 0,
+                    "Pitch": -45,
+                    "Roll": 0,
+                    "Yaw": 0
+                },
+                "Back": {
+                    "CaptureSettings": [
+                        {
+                            "ImageType": 0,
+                            "Width": 4864,
+                            "Height": 3648,
+                            "FOV_Degrees": 84
+                        }
+                    ],
+                    "Gimbal": {
+                        "Stabilization": 0,
+                        "Pitch": -45,
+                        "Roll": 0,
+                        "Yaw": 180
+                    },
+                    "X": 0,
+                    "Y": 0,
+                    "Z": 0,
+                    "Pitch": -45,
+                    "Roll": 0,
+                    "Yaw": 180
+                },
+                "Left": {
+                    "CaptureSettings": [
+                        {
+                            "ImageType": 0,
+                            "Width": 4864,
+                            "Height": 3648,
+                            "FOV_Degrees": 84
+                        }
+                    ],
+                    "Gimbal": {
+                        "Stabilization": 0,
+                        "Pitch": -45,
+                        "Roll": 0,
+                        "Yaw": 90
+                    },
+                    "X": 0,
+                    "Y": 0,
+                    "Z": 0,
+                    "Pitch": -45,
+                    "Roll": 0,
+                    "Yaw": 90
+                },
+                "Right": {
+                    "CaptureSettings": [
+                        {
+                            "ImageType": 0,
+                            "Width": 4864,
+                            "Height": 3648,
+                            "FOV_Degrees": 84
+                        }
+                    ],
+                    "Gimbal": {
+                        "Stabilization": 0,
+                        "Pitch": -45,
+                        "Roll": 0,
+                        "Yaw": 270
+                    },
+                    "X": 0,
+                    "Y": 0,
+                    "Z": 0,
+                    "Pitch": -45,
+                    "Roll": 0,
+                    "Yaw": 270
+                }
+            }
+        }
+    }
+}

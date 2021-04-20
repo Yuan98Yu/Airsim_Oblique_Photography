@@ -1,0 +1,13 @@
+.idea
+.vscode
+__pycache__
+.pytest_cache
+
+# output
+imgs/
+*.png
+
+# tmp
+tmp_src/
+*.pdf
+

@@ -1,0 +1,53 @@
+{
+	"SettingsVersion": 1.2,
+	"SimMode": "Multirotor",
+	"ClockSpeed": 5,
+	"Recording": {
+		"RecordOnMove": false,
+		"Cameras": [
+			{
+				"ImageType": 2,
+				"PixelsAsFloat": true,
+				"Compressed": false
+			}
+		]
+	},
+	"CameraDefaults": {
+		"CaptureSettings": [
+			{
+				"ImageType": 0,
+				"Width": 1920,
+				"Height": 1080
+			},
+			{
+				"ImageType": 2,
+				"Width": 480,
+				"Height": 270
+			}
+		]
+	},
+	"Vehicles": {
+		"COOLA-Drone": {
+			"VehicleType": "SimpleFlight",
+			"X": 0, "Y": 0, "Z": 0,
+			"Sensors": {
+				"BottomObstacleDetector": {
+					"SensorType": 6,
+					"Enabled": true,
+					"Range": 10,
+					"NumberofChannels": 16,
+					"RotationsPerSecond": 10,
+					"PointsPerSecond": 1000,
+					"X": 0, "Y":0, "Z": 0,
+					"Roll": 0, "Pitch": -90, "Yaw": 0,
+					"VerticalFOVUpper": -180,
+					"VerticalFOVLower": 180,
+					"HorizontalFOVStart": 0,
+					"HorizontalFOVEnd": 359,
+					"DrawDebugPoints": true,
+					"DataFrame": "SensorLocalFrame"
+				}
+			}
+		}
+	}
+}
