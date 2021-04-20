@@ -59,6 +59,7 @@ class ImgCapture:
         return pos_list
 
     def catch_and_save_imgs(self, pos, idx, save_dir):
+        print(idx)
         self.client.simSetVehiclePose(
             airsim.Pose(airsim.Vector3r(*pos), airsim.to_quaternion(0, 0, 0)), True)
 
@@ -81,13 +82,13 @@ class ImgCapture:
 
         for i, response in enumerate(responses):
             if response.pixels_as_float:
-                print("pos\n%s" % (pprint.pformat(response.camera_position)))
+                # print("pos\n%s" % (pprint.pformat(response.camera_position)))
                 airsim.write_pfm(
                     os.path.normpath(
                         os.path.join(save_dir, f'{idx}_{camera_name_list[i]}.pfm')),
                     airsim.get_pfm_array(response))
             else:
-                print("pos\n%s" % (pprint.pformat(response.camera_position)))
+                # print("pos\n%s" % (pprint.pformat(response.camera_position)))
                 airsim.write_file(
                     os.path.normpath(
                         os.path.join(save_dir, f'{idx}_{camera_name_list[i]}.png')),
