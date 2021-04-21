@@ -9,8 +9,8 @@
         "CaptureSettings": [
             {
                 "ImageType": 0,
-                "Width": 4864,
-                "Height": 3648,
+                "Width": 2000,
+                "Height": 1000,
                 "FOV_Degrees": 84
             }
         ]
@@ -24,8 +24,8 @@
                     "CaptureSettings": [
                         {
                             "ImageType": 0,
-                            "Width": 4864,
-                            "Height": 3648,
+                            "Width": 2000,
+                            "Height": 1000,
                             "FOV_Degrees": 84
                         }
                     ],
@@ -46,8 +46,8 @@
                     "CaptureSettings": [
                         {
                             "ImageType": 0,
-                            "Width": 4864,
-                            "Height": 3648,
+                            "Width": 2000,
+                            "Height": 1000,
                             "FOV_Degrees": 84
                         }
                     ],
@@ -68,8 +68,8 @@
                     "CaptureSettings": [
                         {
                             "ImageType": 0,
-                            "Width": 4864,
-                            "Height": 3648,
+                            "Width": 2000,
+                            "Height": 1000,
                             "FOV_Degrees": 84
                         }
                     ],
@@ -90,8 +90,8 @@
                     "CaptureSettings": [
                         {
                             "ImageType": 0,
-                            "Width": 4864,
-                            "Height": 3648,
+                            "Width": 2000,
+                            "Height": 1000,
                             "FOV_Degrees": 84
                         }
                     ],
@@ -112,8 +112,8 @@
                     "CaptureSettings": [
                         {
                             "ImageType": 0,
-                            "Width": 4864,
-                            "Height": 3648,
+                            "Width": 2000,
+                            "Height": 1000,
                             "FOV_Degrees": 84
                         }
                     ],
