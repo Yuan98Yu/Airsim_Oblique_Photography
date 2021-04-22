@@ -8,6 +8,7 @@ imgs/
 *.png
 
 # tmp
+tmp*
 tmp_src/
 *.pdf
 

@@ -6,6 +6,7 @@ import os
 import json
 from itertools import product
 
+import pandas as pd
 from setup_path import SetupPath
 SetupPath.addAirSimModulePath()
 import airsim
@@ -19,12 +20,16 @@ class ImgCapture:
         self.client.confirmConnection()
         self.pos_list = self.generate_path(self.cfg)
         self.camera_list = ["Down", "Front", "Back", "Left", "Right"]
+        self.reset()
 
     def reset(self):
         # currently reset() doesn't work in CV mode. Below is the workaround
         self.client.simSetVehiclePose(
             airsim.Pose(airsim.Vector3r(0, 0, 0),
                         airsim.to_quaternion(0, 0, 0)), True)
+        self.log_table = pd.DataFrame(columns=('img_name', 'camera_x',
+                                               'camera_y', 'camera_height'))
+        # self.log_table.set_index('img_path')
 
     def navigate_and_catch_imgs(
             self,
@@ -32,9 +37,11 @@ class ImgCapture:
             pos_list,
             camera_list=["Down", "Front", "Back", "Left", "Right"]):
         os.makedirs(os.path.join(save_dir), exist_ok=False)
+        self.reset()
         pass
         for idx, pos in enumerate(pos_list):
             self.catch_and_save_imgs(pos, idx, save_dir, camera_list)
+        self.log_table.to_csv(os.path.join(save_dir, 'log.csv'))
 
     def generate_path(self, cfg, heading_step=None, side_step=None):
         target_region, height, side_overlap_rate, heading_overlap_rate = cfg[
@@ -55,16 +62,21 @@ class ImgCapture:
                                        focal_length, side_overlap_rate)
         print(f'heading_step: {heading_step}\n' f'side_step: {side_step}')
 
-        pos_list = list()
         heading_num, side_num = int(heading_length / heading_step), int(
             side_length / side_step)
         print(f'total_num: {heading_num * side_num}')
+        pos_list = list()
+        reverse = False
         for i in range(heading_num):
-            
+            tmp_list = list()
             for j in range(side_num):
-                x, y = target_region[0][0] + i * heading_step, target_region[0][
-                    1] + j * side_step
-                pos_list.append((x, y, height))
+                x, y = target_region[0][0] + i * heading_step, target_region[
+                    0][1] + j * side_step
+                tmp_list.append((x, y, height))
+            if reverse:
+                tmp_list.reverse()
+            reverse = not reverse
+            pos_list.extend(tmp_list)
         return pos_list
 
     def catch_and_save_imgs(
@@ -99,10 +111,17 @@ class ImgCapture:
                     airsim.get_pfm_array(response))
             else:
                 # print("pos\n%s" % (pprint.pformat(response.camera_position)))
-                airsim.write_file(
-                    os.path.normpath(
-                        os.path.join(save_dir, f'{idx}_{camera_list[i]}_x{pos[0]}_y{pos[1]}.png')),
-                    response.image_data_uint8)
+                img_name = f'{idx}_{camera_list[i]}_x{pos[0]}_y{pos[1]}.png'
+                img_path = os.path.join(save_dir, img_name)
+                airsim.write_file(img_path, response.image_data_uint8)
+                self.log_table = self.log_table.append(
+                    {
+                        'img_name': img_name,
+                        'camera_x': pos[0],
+                        'camera_y': pos[1],
+                        'camera_height': pos[2]
+                    },
+                    ignore_index=True)
 
     def _get_step(self, height, frame_length, focal_length, ovellap_ratio):
         x = frame_length * (-height) / focal_length
@@ -120,7 +139,7 @@ def test(args):
     capture = ImgCapture(cfg_path=args.cfg_path)
     # region, height = capture.cfg['target_region'], capture.cfg['height']
     # path = list(map(lambda pos: (*pos, height), region))
-    path = capture.generate_path(capture.cfg, heading_step=100, side_step=100)
+    path = capture.generate_path(capture.cfg, heading_step=500, side_step=500)
     print(path)
     # capture.navigate_and_catch_imgs(args.save_dir, path, capture.camera_list)
     camera_list = ['Down']
